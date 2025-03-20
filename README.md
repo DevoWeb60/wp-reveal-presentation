@@ -1,54 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React + TypeScript + Vite
 
-# RevealJS with React
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project is a boilerplate for creating revealJS presentations using React.
-All the basic create-react-app commands are available.
+Currently, two official plugins are available:
 
-## Example
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-A demo can be found [here](https://cberthou.github.io/revealjs-react-boilerplate/)
+## Expanding the ESLint configuration
 
-## Getting started
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Start by cloning the repository
-```bash
-git clone git@github.com:cberthou/revealjs-react-boilerplate.git
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-then, install dependencies
-```bash
-yarn install
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-You are ready to go
-```bash
-yarn start
-```
-
-## Configuring
-
-### Syntax highlighting
-
-Syntax highlighting is configured in `src/highlightLanguages.js`. You can set the theme from `highlight.js` and 
-load the required languages here.
-
-Then, to create an highlighted code block, you can do :
-```javascript
-const codeExample = `function aFunction() {
-    const value = 10;
-
-    return value;
-}`;
-
-return <Lowlight value={codeExample} language="js" />
-```
-
-### Changing the theme
-
-To change the CSS theme of your slide deck, you can import the correct reveal.js theme in `App.js`.
-```
-import 'reveal.js/css/theme/solarized.css';
-```
-
-You can also create your own theme. Check the [reveal.js repository](https://github.com/hakimel/reveal.js/) to do so.
