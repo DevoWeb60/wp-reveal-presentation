@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react'
 import Reveal from 'reveal.js'
 import "reveal.js/dist/reveal.css";
-import "reveal.js/dist/theme/solarized.css";
+import "reveal.js/dist/theme/moon.css";
+import "reveal.js/plugin/highlight/monokai.css"
+import RevealHighlight from "reveal.js/plugin/highlight/highlight";
+import RevealNotes from "reveal.js/plugin/notes/notes";
 
 export default function RevealSlides({ children }: { children: React.ReactNode }) {
     const deckDivRef = useRef<HTMLDivElement | null>(null); // reference to deck container div
@@ -12,6 +15,7 @@ export default function RevealSlides({ children }: { children: React.ReactNode }
         if (deckRef.current) return;
 
         deckRef.current = new Reveal(deckDivRef.current!, {
+            plugins: [RevealHighlight, RevealNotes],
             transition: "slide",
             // slideNumber: true,
             // controls: true,
