@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import Reveal from 'reveal.js'
 import "reveal.js/dist/reveal.css";
-import "reveal.js/dist/theme/moon.css";
+import "reveal.js/dist/theme/league.css";
 import "reveal.js/plugin/highlight/monokai.css"
 import RevealHighlight from "reveal.js/plugin/highlight/highlight";
 import RevealNotes from "reveal.js/plugin/notes/notes";
@@ -18,14 +18,13 @@ export default function RevealSlides({ children }: { children: React.ReactNode }
             plugins: [RevealHighlight, RevealNotes],
             transition: "slide",
             // slideNumber: true,
-            // controls: true,
             progress: true,
-
         });
 
-        deckRef.current.initialize().then(() => {
-            // good place for event handlers and plugin setups
-        });
+        deckRef.current.initialize()
+        // .then(() => {
+        //     // good place for event handlers and plugin setups
+        // });
 
         return () => {
             try {
