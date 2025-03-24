@@ -5,7 +5,7 @@ export default function BaseNewsOptions() {
     const getNewsHeader = () => {
         return (
             <>
-                <h2>Les nouveautées <small>v1.0.0</small></h2>
+                <h2>Les nouveautées <span className="badge secondary">v1.0.0</span></h2>
                 <h4>Option de thème</h4>
             </>
         )

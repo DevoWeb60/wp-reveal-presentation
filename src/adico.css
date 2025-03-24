@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nobile:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+/* Variables
+! Thème basé du celui de "League" de reveal.js
+* Définition des couleurs principales et secondaires
+* Définition des polices de caractères
+*/
+:root{
+    --adico-primary-rgb: 96, 189, 236; /* #60bdec */
+    --adico-primary-dark-rgb: 0, 114, 180; /* #0072b4 */
+    --adico-secondary-rgb: 245, 159, 14; /* #f59f0e */
+    --adico-secondary-dark-rgb: 217, 140, 55; /* #d98c37 */
+    --adico-tertiary-rgb: 41, 162, 55; /* #29a237 */
+    --adico-tertiary-dark-rgb: 29, 112, 40; /* #1d7028 */
+    --adico-background-rgb: 254, 254, 254; /* #fefefe */
+
+    --adico-danger-rgb: 239, 68, 68; /* #ef4444 */
+    --adico-danger-dark-rgb: 185, 28, 28; /* #b91c1c */
+    
+    --adico-primary: rgb(var(--adico-primary-rgb));
+    --adico-primary-dark: rgb(var(--adico-primary-dark-rgb));
+    --adico-secondary: rgb(var(--adico-secondary-rgb));
+    --adico-secondary-dark: rgb(var(--adico-secondary-dark-rgb));
+    --adico-tertiary: rgb(var(--adico-tertiary-rgb));
+    --adico-tertiary-dark: rgb(var(--adico-tertiary-dark-rgb));
+    --adico-background: rgb(var(--adico-background-rgb));
+
+    --adico-danger: rgb(var(--adico-danger-rgb));
+    --adico-danger-dark: rgb(var(--adico-danger-dark-rgb));
+
+    --adico-text-color: #212121;
+
+    --adico-font-title: 'Nobile', sans-serif;
+    --adico-font-body: 'Lato', sans-serif;
+}
+
+/* Reset et styles de bases
+* Reset du style du thème : 'league' de reveal.js
+*/
+#root {
+    height: 100vh;
+    width: 100vw;
+
+     &::after{
+        content: "";
+        background-image: url(/logo.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 150px;
+        height:100px;
+    }
+
+     &::before{
+        content: "";
+        background-image: url(/cils.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        width: 150px;
+        height:100px;
+        rotate: 20deg;
+        scale: -1 1;
+    }
+}
+
+body{
+    font-family: var(--adico-font-body) !important;
+    background: var(--adico-background) !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--adico-font-title) !important;
+    color: var(--adico-primary-dark) !important;
+    font-weight: 900 !important;
+    text-transform: none !important;
+    line-height: 1.5 !important;
+    display:flex; 
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    text-shadow: none !important;
+}
+
+ul, ol {
+    li {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Correction Highlight JS
+* Retrait du cumule des opacités pour chaque lignes lorsque l'ont dévoilé les lignes en question
+* au fur et à mesure que l'on avance dans le code.
+*/
+div.reveal .hljs.has-highlights tr:not(.highlight-line){
+    opacity:1;
+}
+div.reveal .hljs.has-highlights .hljs-ln-line.hljs-ln-code tr:not(.highlight-line){
+    opacity:0.4;
+}
+
+/*
+* Styles du thème : 'adico'
+* Overide des styles de reveal.js
+*/
+.reveal{
+    --r-main-color: var(--adico-text-color) !important;
+
+    p, code:not(.hljs), a, blockquote{
+        font-size: 0.5em !important;
+    }
+
+    .code{
+        margin-top: 22px !important;
+        margin-bottom: 30px !important;
+        position: relative;
+
+        .fileName{
+            position: absolute;
+            top:-2px;
+            left:0;
+            font-size: 0.7rem !important;
+            font-weight: 900;
+            color: var(--adico-secondary);
+            /* width: 100%; */
+            transform: translateY(-100%);
+        }
+
+        pre{
+            margin: 0;
+            width:100%;
+        }
+    }
+
+    li{
+        font-size: 0.6em !important;
+    }
+
+    code{
+        border-radius: 10px;
+    }
+
+    h1{
+        --r-heading1-size: 1.3em;
+    }
+
+    h2{
+        --r-heading2-size: 1.2em;
+    }
+
+    h3{
+        --r-heading3-size: 1.1em;
+    }
+
+    h4{
+        --r-heading4-size: 0.8em;
+    }
+
+    h5{
+        --r-heading5-size: 0.7em;
+    }
+
+    h6{
+        --r-heading6-size: 0.6em;
+    }
+
+    code:not(.hljs){
+        background: rgba(var(--adico-secondary-rgb), 0.2);
+        padding: 0.2rem;
+        border-radius: 0.2rem;
+        font-size: 0.7em !important;
+        font-weight: 900;
+        color: var(--adico-secondary) !important;
+    }
+
+    ul{
+        list-style: none;
+        
+        li::before{
+            content: "→ ";
+            font-weight: 900;
+            margin-right: 0.5em;
+        }
+    }
+
+    .controls button,
+    .progress{
+        color: var(--adico-tertiary) !important;
+    }
+
+    img{
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+} 
+
+/* Classes utilitaires
+* Taille des polices de caractères
+* Couleurs 
+* Backgrounds
+* Badges
+* Flex
+*/
+
+.flex {
+    display: flex;
+    gap: 1rem;
+
+    & > * {
+        flex: 1 1 auto;
+        width: 45% !important;
+        min-width: unset !important;
+    }
+
+    &.between{
+        justify-content: space-between;
+    }
+
+    &.start{
+        justify-content: flex-start;
+    }
+
+    &.center{
+        justify-content: center;
+    }
+
+    &.end{
+        justify-content: flex-end;
+    }
+
+    &.align-center{
+        align-items: center;
+    }
+
+    &.align-end{
+        align-items: flex-end;
+    }
+
+    &.align-start{
+        align-items: flex-start;
+    }
+    
+    &.column{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &.row{
+        flex-direction: row;
+    }
+
+    &.wrap{
+        flex-wrap: wrap;
+    }
+
+    &.nowrap{
+        flex-wrap: nowrap;
+    }
+}
+
+.size {
+    &.xs{
+        font-size: 0.5em !important;
+    }
+
+    &.sm{
+        font-size: 0.7em !important;
+    }
+
+    &.md{
+        font-size: 0.9em !important;
+    }
+
+    &.lg{
+        font-size: 1.1em !important;
+    }
+
+    &.xl{
+        font-size: 1.3em !important;
+    }   
+
+    &.xxl{
+        font-size: 1.5em !important;
+    }
+}
+
+.txt{
+    &.left{
+        text-align: left !important;
+    }
+
+    &.center{
+        text-align: center !important;
+    }
+
+    &.right{
+        text-align: right !important;
+    }
+
+    &.uppercase{
+        text-transform: uppercase !important;
+    }
+}
+
+.color{
+
+    &.default{
+        color: var(--r-main-color) !important;
+    }
+
+    &.primary{
+        color: var(--adico-primary) !important;
+    }
+
+    &.primary-dark{
+        color: var(--adico-primary-dark) !important;
+    }
+
+    &.secondary{
+        color: var(--adico-secondary) !important;
+    }
+
+    &.tertiary{
+        color: var(--adico-tertiary) !important;
+    }
+
+    &.danger{
+        color: var(--adico-danger) !important;
+    }
+}
+
+.bg{
+
+    &.default{
+        background: var(--adico-background) !important;
+    }
+
+    &.primary{
+        background: var(--adico-primary) !important;
+    }
+    
+    &.primary-dark{
+        background: var(--adico-primary-dark) !important;
+    }
+
+    &.secondary{
+        background: var(--adico-secondary) !important;
+    }
+
+    &.tertiary{
+        background: var(--adico-tertiary) !important;
+    }
+}
+
+
+/* Layouts 
+* Grid container
+*/
+.container-grid {
+    display: grid;
+    grid-template-columns: repeat(minmax(300px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    
+    &.grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+    }
+    
+    &.grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(300px, 1fr));
+    }
+    
+    &.grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(300px, 1fr));
+    }
+}
+
+/* Composants 
+* Card
+* Alert
+* Badge
+*/
+.card {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(var(--adico-tertiary-rgb), 0.1);
+    border: 1px solid rgba(var(--adico-tertiary-dark-rgb), 0.2);
+    
+    p, li, code{
+        font-size: 1.2rem;
+    }
+}
+
+.alert{
+    padding: 1rem;  
+    border-radius: 0.5rem;
+    background: rgba(var(--adico-primary-rgb), 0.1);
+    border: 1px solid rgba(var(--adico-primary-dark-rgb), 0.2);
+    text-align: left;
+    
+    i{
+        color: var(--adico-primary);
+        font-size: 1.9rem;
+    }
+
+    .title{
+        font-size: 1.4rem;
+        font-weight: 900;
+        justify-content: flex-start !important;
+        color: var(--adico-primary-dark) !important;
+        text-align: left !important;
+        line-height: 1 !important;
+    }
+    
+    p, li, code{
+        font-size: 1.2rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    &.danger{
+        background: rgba(var(--adico-danger-rgb), 0.1);
+        color: var(--adico-danger-dark);
+        border: 1px solid rgba(var(--adico-danger-dark-rgb), 0.2);
+        
+        .title{
+            color: var(--adico-danger-dark) !important;
+        }
+        
+        i{
+            color: var(--adico-danger-dark) !important;
+        }
+    }
+    
+    &.warning{
+        background: rgba(var(--adico-secondary-rgb), 0.1);
+        color: var(--adico-secondary-dark);
+        border: 1px solid rgba(var(--adico-secondary-dark-rgb), 0.2);
+        
+        .title{
+            color: var(--adico-secondary-dark) !important;
+        }
+        
+        i{
+            color: var(--adico-secondary-dark) !important;
+        }
+    }
+
+    &.success{
+        background: rgba(var(--adico-tertiary-rgb), 0.1);
+        color: var(--adico-tertiary-dark);
+        border: 1px solid rgba(var(--adico-tertiary-dark-rgb), 0.2);
+        
+        .title{
+            color: var(--adico-tertiary-dark) !important;
+        }
+        
+        i{
+            color: var(--adico-tertiary-dark) !important;
+        }
+    }
+}
+
+.badge{
+    background: rgba(var(--adico-primary-rgb), 0.2);
+    color: var(--adico-primary);
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 1rem !important;
+    text-transform: none !important;
+
+    &.primary-dark{
+        background: rgba(var(--adico-primary-dark-rgb), 0.2);
+        color: var(--adico-primary-dark);
+    }
+
+    &.secondary{
+        background: rgba(var(--adico-secondary-rgb), 0.2);
+        color: var(--adico-secondary);
+    }
+
+    &.tertiary{
+        background: rgba(var(--adico-tertiary-rgb), 0.2);
+        color: var(--adico-tertiary);
+    }
+}

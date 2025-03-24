@@ -1,62 +1,7 @@
-#root {
-    height: 100vh;
-    width: 100vw;
-}
 
-ul, ol {
-    font-size: 2rem;
 
-    li {
-        margin-bottom: 1rem;
-    }
-}
 
-.reveal h2 small{
-    font-size: 1.5rem;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 2rem;
-    border-radius: 9999px;
-    font-weight: 400;
-}
 
-code {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.2rem;
-    border-radius: 0.2rem;
-    font-size: 1.5rem;
 
-}
 
-.txt-left {
-    text-align: left;
-}
-
-.container-grid {
-    display: grid;
-    grid-template-columns: repeat(minmax(300px, 1fr));
-    gap: 1rem;
-    width: 100%;
-
-    &.grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(300px, 1fr));
-    }
-}
-
-.card {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
-    p, li, code{
-        font-size: 1.2rem;
-    }
-}
-
-div.reveal .hljs.has-highlights tr:not(.highlight-line){
-    opacity:1;
-}
-div.reveal .hljs.has-highlights .hljs-ln-line.hljs-ln-code tr:not(.highlight-line){
-    opacity:0.4;
-}
 
